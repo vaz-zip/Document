@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block title %}Регистрация{% endblock %}
+<!-- <style>
+    .pass_field {
+        border:1px solid #ccc; 
+        border-radius:10px;
+        height:25px;
+        width:200px;
+        margin: 10px 10px 10px 0;
+    }
+</style> -->
+{% block content %}
+<h2 class="enter-sistem">Регистрация</h2>
+<form class="registr-sistem" method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <br>
+    <input class="enter-log" type="submit" value="Регистрация">
+</form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'flatpages/base.html' %}
+{% block content %}
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
+<h5 class="title_1">User: {{ request.user.username }}, ID={{ request.user.id }}, Ваших документов в базe: {{ paginator.count }}</h5>
+   {% if documents %}
+   <h4 class="title_2">Найти документ</h4>
+<form class="search-doc" method="GET">    
+ {{ filter.form }}
+<p></p>
+<div class="d-grid gap-3 col-3 btn-wrapper">
+    <input type="submit" class="btn" value="Найти документ">
+</div>   
+</form>
+    <br>
+    <table class="table_blur">
+        <thead>
+           <tr>
+               <th scope="col">Название</th>
+               <th scope="col">Описание</th>
+               <th scope="col">Тип документа</th>
+               <th scope="col">№ документа</th>
+               <th scope="col">Дата документа</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for document in documents %}  <!--in documents filter.qs%} -->
+           
+           <tr>
+               <th scope="row">
+                <a href="{% url 'document:document_detail' document.id %}" class="link-dark">{{ document.title|truncatechars:12 }}</a>
+               </th>  
+               <th scope="row">{{ document.textDocument|truncatechars:18}}</th>
+               <th scope="row">{{ document.category }}</th>
+               <th scope="row">{{ document.number }}</th>
+               <th scope="row">{{ document.dateCreate|date:'d M Y'}}</th>
+           </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+       
+   {% else %}
+
+       <h2 class="doc-none">Вы не сохранили ни одного документа!</h2>
+
+   {% endif %}
+   {% include "pagination.html" with page=page_obj %}
+
+<p></p>
+<div class="btn-wrapper">
+    <a class="btn" href="{% url 'document:document_add' %}">Добавить документ</a>
+</div >
+{% endblock content %}

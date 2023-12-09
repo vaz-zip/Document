@@ -1,0 +1,29 @@
+<h3>Документ {{ document.title }} фомат pdf </h3>
+<table class="table-deitail">
+    <thead>
+       <tr>
+           <th scope="col1">Название</th>
+           <th scope="col1">Тип документа</th>
+           <th scope="col1">№ документа</th>
+           <th scope="col1">Дата документа</th>
+           </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <th scope="row1">{{ document.title }}</th>  
+        <th scope="row1">{{ document.category }}</th>
+        <th scope="row1">{{ document.number }}</th>
+        <th scope="row1">{{ document.dateCreate|date:'d M Y'}}</th>
+       </tr>
+    </tbody> 
+</table>
+<hr>
+            <h3 class="fw-bold">Описание</h3>
+            <p class="text-break">{{ document.textDocument }}</p>
+            <p>Внимание! Документ не содержит сканированных копий исходника, они распечатываются отдельно!</p>
+      <div> 
+          {% for image in document.images_doc.all %}
+       <a href="{{ image.file.url }}">
+          <img src="{{ image.file }}" class="scale"></img>
+       {% endfor %}
+      </div>       

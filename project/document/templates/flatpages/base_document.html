@@ -1,0 +1,39 @@
+<table class="table-deitail">
+    <thead>
+       <tr>
+           <th scope="col1">Название</th>
+           <th scope="col1">Тип документа</th>
+           <th scope="col1">№ документа</th>
+           <th scope="col1">Дата документа</th>
+           </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <th scope="row1">{{ document.title }}</th>  
+        <th scope="row1">{{ document.category }}</th>
+        <th scope="row1">{{ document.number }}</th>
+        <th scope="row1">{{ document.dateCreate|date:'d M Y'}}</th>
+       </tr>
+    </tbody> 
+</table>
+<hr>
+            <h3 class="fw-bold">Описание</h3>
+            <p class="text-break">{{ document.textDocument }}</p>
+
+<div class="foto"> 
+       
+       {% for image in document.images_doc.all %}
+       {% load thumbnail %}
+
+       <a href="{{ image.file.url }}">
+          <img src="{{ image.file|thumbnail_url:'my_preview_1' }}" class="scale"></img>
+       </a>
+   
+        <form action="{% url 'document:deleting_an_image' image.id %}" method="POST">
+
+            
+            <button type="submit" class="delete_button" value="main_button">
+             <img src="/static/delete.png" alt="Удалить" title="Намите для удаления Фото!" width="16" height="16">
+            </button>
+        </form>
+        {% endfor %}

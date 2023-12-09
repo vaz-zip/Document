@@ -1,0 +1,32 @@
+{% extends 'flatpages/base.html' %}
+{% block content %}
+<table class="table-deitail">
+    <thead>
+       <tr>
+           <th scope="col1">Название</th>
+           <th scope="col1">Тип документа</th>
+           <th scope="col1">№ документа</th>
+           <th scope="col1">Дата документа</th>
+           </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <th scope="row1">{{ document.title }}</th>  
+        <th scope="row1">{{ document.category }}</th>
+        <th scope="row1">{{ document.number }}</th>
+        <th scope="row1">{{ document.dateCreate|date:'d M Y'}}</th>
+       </tr>
+    </tbody> 
+</table>
+            <h3 class="fw-bold">Описание</h3>
+            <p class="text-break">{{ document.textDocument }}</p>
+            <h4 class="center">При подтверждении удаления, документ будет удалён вместе со всеми вложениями!</h3> 
+     <form method="POST">
+             {% csrf_token %}
+             <div class="btn-wrapper">
+                <input type="submit" class="btn" value="Подтвердить удаление">
+            </div>
+    </form>
+
+
+{% endblock content %}
