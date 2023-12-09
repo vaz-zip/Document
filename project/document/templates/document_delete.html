@@ -19,7 +19,9 @@
     </tbody> 
 </table>
             <h3 class="fw-bold">Описание</h3>
+        <div class="break">
             <p class="text-break">{{ document.textDocument }}</p>
+        </div>
             <h4 class="center">При подтверждении удаления, документ будет удалён вместе со всеми вложениями!</h3> 
      <form method="POST">
              {% csrf_token %}
