@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'document.apps.DocumentConfig',
     'easy_thumbnails',
+    'redisboard',
     ]
 
 SITE_ID = 1
@@ -108,12 +109,19 @@ AUTH_PASSWORD_VALIDATORS = [
     ]
 
 PASSWORD_HASHERS = [
-'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-'django.contrib.auth.hashers.Argon2PasswordHasher',
-'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-'django.contrib.auth.hashers.ScryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.ScryptPasswordHasher',
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+        }
+    }
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
