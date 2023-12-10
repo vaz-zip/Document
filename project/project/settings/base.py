@@ -78,7 +78,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Doc',
+        'USER': 'Docs',
+        'PASSWORD': 'baldeha',
+}
+}
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
