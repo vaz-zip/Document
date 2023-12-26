@@ -1,0 +1,20 @@
+Ресурс для сохранения описания и сканов документов в базе данных.
+Используемые библиотеки:
+БД PjstgreSQL
+Обработка изображений - Pillow, easy-thumbnails
+Вывод описания документа в файл *.pdf - weasyprint
+Кеш - redis
+
+Версии библиотек в файле requirements.txt
+Запуск - docker run -it --rm --name redis -p 6379:6379 redis
+       - python manage.py runserver --settings=project.settings.local
+или    - python manage.py runserver --settings=project.settings.prod  
+или    - python manage.py runserver, определив средовую переменную:
+       - export DJANGO_SETTINGS_MODULE=project.settings.local
+или    - export DJANGO_SETTINGS_MODULE=project.settings.prod
+
+Для переноса БД можно использовать комнад:
+       - python manage.py dumpdata --indent=2 --output=mysite_data.json (для выгрузки в файл  mysite_data.json)
+       - python -Xutf8 manage.py dumpdata --indent=2 --output=mysite_data.json (при ошибке кодировки)
+       - 
+

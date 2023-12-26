@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@#x@!pi4o=tr&@j0lag7jqs+p33#17fr+$4dr01+wq=$cd0prt
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'document.apps.DocumentConfig',
     'easy_thumbnails',
     'redisboard',
+    'django.contrib.postgres'
     ]
 
 SITE_ID = 1
@@ -78,14 +79,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Doc',
-        'USER': 'Docs',
-        'PASSWORD': 'baldeha',
-}
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Doc',
+#         'USER': 'Docs',
+#         'PASSWORD': 'baldeha',
+# }
+# }
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
